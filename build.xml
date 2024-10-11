@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Compilation de Tetris" default="compile" basedir=".">
+  <description>
+    Compilation de Tetris avec ant
+  </description>
+  <property name="src" location="src"/>
+  <property name="bin" location="bin"/>
+  <property name="dist" location="dist"/>
+
+  <target name="init">
+    <tstamp/>
+    <mkdir dir="${bin}"/>
+  </target>
+
+  <target name="compile" depends="init"
+        description="compile the source">
+    <javac srcdir="${src}" destdir="${bin}"/>
+  </target>
+
+  <target name="dist" depends="compile"
+        description="generate the distribution">
+    
+    <mkdir dir="${dist}/lib"/>
+    <jar jarfile="${dist}/lib/Tetris.jar" basedir="${bin}"/>
+  </target>
+
+  <target name="clean"
+        description="clean up">
+        
+        <echo message ="Suppression des fichiers issues de la compilation "></echo>
+    <delete dir="${dist}"/>
+  	<delete dir="${bin}"/>
+  </target>
+</project>
