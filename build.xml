@@ -1,40 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project name="Compilation de Tetris" default="compile" basedir=".">
-  <description>
-    Compilation de Tetris avec ant
-  </description>
-  <property name="src" location="src"/>
-  <property name="bin" location="bin"/>
-  <property name="libs" location="lib"/>
-
-  <property name="dist" location="dist"/>
-  <property name="main-class" location="src/fr/ubo/tetris/Tetris"/>
-  <property name="compile.classpath" location="lib/commons-lang3-3.5.jar"/>
-
-
-  <target name="init">
-    <tstamp/>
-    <mkdir dir="${bin}"/>
-  </target>
-
-  <target name="compile" depends="init"
-        description="compile the source">
-    <javac srcdir="${src}" destdir="${bin}"/>
-  </target>
-
-  <target name="dist" depends="compile"
-        description="generate the distribution">
+    <description>
+        Compilation de Tetris avec Ant
+    </description>
     
-    <mkdir dir="${dist}/lib"/>
-    <jar jarfile="${dist}/lib/Tetris.jar" basedir="${bin}" Implementation-Version="1.0.1" Main-Class="Tetris" Class-Path="lib/commons-lang3-3.5.jar" Built-By="Mohamed EL HADDAD" />
-  </target>
+    <property name="src.dir" location="src"/>
+    <property name="obj.dir" location="bin"/>
+    <property name="libs.dir" location="lib"/>
+    <property name="main.class" value="fr.ubo.tetris.Tetris"/>
+    <property name="compile.classpath" value="${libs.dir}/commons-lang3-3.5.jar"/>
+    <property name="Version" value="1.0.1"/>
 
-  <target name="clean"
-        description="clean up">
-        
-        <echo message ="Suppression des fichiers issues de la compilation "></echo>
-    <delete dir="${dist}"/>
-  	<delete dir="${bin}"/>
-  </target>
+
+    <target name="init">
+        <tstamp/>
+        <mkdir dir="${obj.dir}"/>
+    </target>
+
+    <target name="compile" depends="init" description="Compile the source">
+    	<javac srcdir="${src.dir}" destdir="${obj.dir}" classpath="${compile.classpath}" source="17" target="17"/>
+
+        <jar jarfile="${obj.dir}/Tetris.jar" basedir="${obj.dir}">
+            <manifest>
+                <attribute name="Implementation-Version" value="${Version}"/>
+                <attribute name="Main-Class" value="${main.class}"/> 
+                <attribute name="Class-Path" value="${compile.classpath}"/>
+                <attribute name="Built-By" value="Mohamed EL HADDAD"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="clean" description="Clean up">
+        <echo message="Suppression des fichiers issus de la compilation"/>
+        <delete dir="${obj.dir}"/>
+    </target>
 </project>
