@@ -6,7 +6,12 @@
   </description>
   <property name="src" location="src"/>
   <property name="bin" location="bin"/>
+  <property name="libs" location="lib"/>
+
   <property name="dist" location="dist"/>
+  <property name="main-class" location="src/fr/ubo/tetris/Tetris"/>
+  <property name="compile.classpath" location="lib/commons-lang3-3.5.jar"/>
+
 
   <target name="init">
     <tstamp/>
@@ -22,7 +27,7 @@
         description="generate the distribution">
     
     <mkdir dir="${dist}/lib"/>
-    <jar jarfile="${dist}/lib/Tetris.jar" basedir="${bin}"/>
+    <jar jarfile="${dist}/lib/Tetris.jar" basedir="${bin}" Implementation-Version="1.0.1" Main-Class="Tetris" Class-Path="lib/commons-lang3-3.5.jar" Built-By="Mohamed EL HADDAD" />
   </target>
 
   <target name="clean"
