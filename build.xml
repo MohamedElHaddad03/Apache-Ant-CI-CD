@@ -9,7 +9,7 @@
 	<property name="obj.dir" location="bin" />
 	<property name="libs.dir" location="lib" />
 	<property name="main.class" value="fr.ubo.tetris.Tetris" />
-	<property name="compile.classpath" value="${libs.dir}/commons-lang3-3.5.jar;lib/hamcrest-core-1.3.jar;lib/hamcrest-library-1.3.jar;lib/hamcrest-all-1.3.jar;lib/junit-4.13.2.jar" />
+	<property name="compile.classpath" value="${libs.dir}/commons-lang3-3.5.jar;lib/hamcrest-core-1.3.jar;lib/hamcrest-library-1.3.jar;lib/hamcrest-all-1.3.jar;lib/junit-4.12.jar" />
 	<property name="Version" value="1.0.1" />
 	<property name="tests.dir" location="test" />
 	<property name="tests.results.dir" location="bin/test-results" />
@@ -58,7 +58,7 @@
 				<pathelement path="lib/hamcrest-core-1.3.jar" />
 				<pathelement path="lib/hamcrest-library-1.3.jar" />
 				<pathelement path="lib/hamcrest-all-1.3.jar" />
-				<pathelement path="lib/junit-4.13.2.jar" />
+				<pathelement path="lib/junit-4.12.jar" />
 
 
 			</classpath>
@@ -67,30 +67,26 @@
 					<include name="**/*Test*.class" />
 				</fileset>
 			</batchtest>
-			<formatter type="plain" />
-				        <formatter type="xml" />
+			
 			
 
 
 
 		</junit>
 	</target>
-	<target name="test-reports" depends="test" description="Generate test reports">
-	    <mkdir dir="${tests.reports}" />
 
-		<junit printsummary="true" haltonfailure="true" haltonerror="true" showoutput="true">
-	        
-	        <batchtest fork="no" todir="${test.reports}">
-	            <fileset dir="${tests.dir}">
-	                <include name="**/*Test*.class" />
-	            </fileset>
-	        </batchtest>
-			<formatter type="plain" />
-	        <formatter type="xml" />
-			<!--<formatter type="html" />-->
+	
+	<target name="test-reports" depends="test">
+		        <mkdir dir="${tests.reports}" />
+		        <junitreport todir="${tests.reports}">
+		            <fileset dir="${tests.results.dir}">
+		                <include name="*/.xml" />
+		            </fileset>
+		            <report format="frames" todir="${tests.reports}" />
+		        </junitreport>
+		    </target>
 
-	    </junit>
-	</target>
+	
 	<target name="javadoc" description="Generate Javadocs">
 	    <mkdir dir="${doc.dir}" />
 	    <javadoc destdir="${doc.dir}" source="17" classpath="${compile.classpath}">
@@ -107,25 +103,10 @@
 		<echo message="Suppression des fichiers issus de la compilation" />
 		<delete dir="${obj.dir}" />
 		<delete dir="${libs.dir}" />
+		<delete dir="${tests.reports}" />
 	</target>
 	
 	
-	<target name="junit">
-	    <junit>
-	    	<classpath>
-	    					<pathelement path="${obj.dir}" />
-	    					<pathelement path="${compile.classpath}" />
-	    					<pathelement path="lib/hamcrest-core-1.3.jar" />
-	    					<pathelement path="lib/hamcrest-library-1.3.jar" />
-	    					<pathelement path="lib/hamcrest-all-1.3.jar" />
-	    					<pathelement path="lib/junit-4.13.2.jar" />
 
-
-	    				</classpath>	        <batchtest>
-	            <fileset dir="${tests.dir}" />
-	        </batchtest>
-	        <formatter type="plain" usefile="false" />
-	    </junit>
-	</target>
 
 </project>
