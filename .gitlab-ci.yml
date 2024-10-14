@@ -2,6 +2,7 @@ stages:
   - build
   - test
   - document
+  - notify
 
 variables:
   ANT_HOME: "/usr/share/ant"
@@ -35,3 +36,13 @@ document:
   artifacts:
     paths:
       - java-doc/
+  
+notify:
+    stage: notify
+    script:
+      - |
+        curl -X POST -H "Content-Type: application/json" \
+        -d '{
+              "text": "Compilé avec succee"
+            }' \
+        https://chat.googleapis.com/v1/spaces/AAAAbRqmWPk/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=oxHNTaC3Byywe-BcH2GYuwsuM_hFnUFdwKVgWqfHoGM
