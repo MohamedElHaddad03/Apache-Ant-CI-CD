@@ -1,0 +1,37 @@
+stages:
+  - build
+  - test
+  - document
+
+variables:
+  ANT_HOME: "/usr/share/ant"
+  PATH: "$PATH:$ANT_HOME/bin"
+
+before_script:
+  - apt-get update -y
+  - apt-get install -y ant openjdk-17-jdk
+
+build:
+  stage: build
+  script:
+    - ant compile
+  artifacts:
+    paths:
+      - bin/Tetris.jar
+
+test:
+  stage: test
+  script:
+    - ant test-reports
+  artifacts:
+    paths:
+      - bin/test-results/
+      - test-reports/
+
+document:
+  stage: document
+  script:
+    - ant javadoc
+  artifacts:
+    paths:
+      - java-doc/
