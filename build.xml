@@ -104,7 +104,13 @@
 		<delete dir="${obj.dir}" />
 		<delete dir="${libs.dir}" />
 		<delete dir="${tests.reports}" />
+		<delete dir="${doc.dir}" />
+
 	</target>
+	<target name="all" depends="clean, compile, compile-test, test, test-reports, javadoc" description="Compiler, tester, et générer la documentation du projet">
+	    <echo message="Building the project..." />
+	</target>
+
 	
 	
 

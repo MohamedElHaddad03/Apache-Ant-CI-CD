@@ -4,4 +4,13 @@ lib/
 **/bin/
 */bin/
 bin/
+**/javadoc/
+*/javadoc/
+javadoc/
+**/test-reports/
+*/test-reports/
+test-reports/
+**/javadoc/
+*/javadoc/
+javadoc/
 
