@@ -1,5 +1,5 @@
 Testsuite: fr.ubo.tetris.TestShape
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0,062 sec
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0,056 sec
 
 Testcase: initializationError took 0,002 sec
 	Caused an ERROR

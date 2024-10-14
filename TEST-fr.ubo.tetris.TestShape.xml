@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="1" failures="0" hostname="dosi-Latitude-5520" name="fr.ubo.tetris.TestShape" skipped="0" tests="1" time="0.062" timestamp="2024-10-14T08:20:05">
+<testsuite errors="1" failures="0" hostname="dosi-Latitude-5520" name="fr.ubo.tetris.TestShape" skipped="0" tests="1" time="0.056" timestamp="2024-10-14T08:55:15">
   <properties>
     <property name="ant.library.dir" value="/home/dosi/.p2/pool/plugins/org.apache.ant_1.10.14.v20230922-1200/lib" />
     <property name="java.specification.version" value="23" />
@@ -17,7 +17,7 @@
     <property name="user.country" value="FR" />
     <property name="sun.java.launcher" value="SUN_STANDARD" />
     <property name="sun.boot.library.path" value="/home/dosi/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_23.0.0.v20240919-1706/jre/lib" />
-    <property name="sun.java.command" value="org.eclipse.ant.internal.launching.remote.InternalAntRunner -Dorg.eclipse.ant.core.ANT_PROCESS_ID=1728894004306 -Declipse.connect.port=37133 -Declipse.pdebuild.home=/home/dosi/eclipse/jee-2024-09/eclipse/../../../.p2/pool/plugins/org.eclipse.pde.build_3.12.500.v20240809-1837/. -Declipse.pdebuild.scripts=/home/dosi/eclipse/jee-2024-09/eclipse/../../../.p2/pool/plugins/org.eclipse.pde.build_3.12.500.v20240809-1837/scripts -Declipse.pdebuild.templates=/home/dosi/eclipse/jee-2024-09/eclipse/../../../.p2/pool/plugins/org.eclipse.pde.build_3.12.500.v20240809-1837/templates -Dant.home=/home/dosi/.p2/pool/plugins/org.apache.ant_1.10.14.v20230922-1200 -Djava.security.manager=allow -logger org.eclipse.ant.internal.launching.remote.logger.RemoteAntBuildLogger -inputhandler org.eclipse.ant.internal.ui.antsupport.inputhandler.ProxyInputHandler -buildfile /home/dosi/eclipse-workspace/TetrisAnt-TP/build.xml test" />
+    <property name="sun.java.command" value="org.eclipse.ant.internal.launching.remote.InternalAntRunner -Dorg.eclipse.ant.core.ANT_PROCESS_ID=1728896114125 -Declipse.connect.port=43205 -Declipse.pdebuild.home=/home/dosi/eclipse/jee-2024-09/eclipse/../../../.p2/pool/plugins/org.eclipse.pde.build_3.12.500.v20240809-1837/. -Declipse.pdebuild.scripts=/home/dosi/eclipse/jee-2024-09/eclipse/../../../.p2/pool/plugins/org.eclipse.pde.build_3.12.500.v20240809-1837/scripts -Declipse.pdebuild.templates=/home/dosi/eclipse/jee-2024-09/eclipse/../../../.p2/pool/plugins/org.eclipse.pde.build_3.12.500.v20240809-1837/templates -Dant.home=/home/dosi/.p2/pool/plugins/org.apache.ant_1.10.14.v20230922-1200 -Djava.security.manager=allow -logger org.eclipse.ant.internal.launching.remote.logger.RemoteAntBuildLogger -inputhandler org.eclipse.ant.internal.ui.antsupport.inputhandler.ProxyInputHandler -buildfile /home/dosi/eclipse-workspace/TetrisAnt-TP/build.xml test" />
     <property name="jdk.debug" value="release" />
     <property name="main.class" value="fr.ubo.tetris.Tetris" />
     <property name="sun.cpu.endian" value="little" />
@@ -29,18 +29,19 @@
     <property name="java.home" value="/home/dosi/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_23.0.0.v20240919-1706/jre" />
     <property name="file.separator" value="/" />
     <property name="basedir" value="/home/dosi/eclipse-workspace/TetrisAnt-TP" />
-    <property name="eclipse.pdebuild.home" value="/home/dosi/eclipse/jee-2024-09/eclipse/../../../.p2/pool/plugins/org.eclipse.pde.build_3.12.500.v20240809-1837/." />
     <property name="java.vm.compressedOopsMode" value="Zero based" />
+    <property name="eclipse.pdebuild.home" value="/home/dosi/eclipse/jee-2024-09/eclipse/../../../.p2/pool/plugins/org.eclipse.pde.build_3.12.500.v20240809-1837/." />
     <property name="line.separator" value="&#xa;" />
     <property name="ant.java.version" value="23" />
     <property name="java.specification.name" value="Java Platform API Specification" />
     <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+    <property name="doc.dir" value="/home/dosi/eclipse-workspace/TetrisAnt-TP/javadoc" />
     <property name="ant.file.Compilation de Tetris" value="/home/dosi/eclipse-workspace/TetrisAnt-TP/build.xml" />
     <property name="libs.dir" value="/home/dosi/eclipse-workspace/TetrisAnt-TP/lib" />
     <property name="ant.file.type.Compilation de Tetris" value="file" />
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
-    <property name="java.runtime.version" value="23+37" />
     <property name="java.security.manager" value="allow" />
+    <property name="java.runtime.version" value="23+37" />
     <property name="user.name" value="dosi" />
     <property name="ant.file" value="/home/dosi/eclipse-workspace/TetrisAnt-TP/build.xml" />
     <property name="stdout.encoding" value="UTF-8" />
@@ -51,11 +52,11 @@
     <property name="ant.project.invoked-targets" value="test" />
     <property name="java.vm.name" value="OpenJDK 64-Bit Server VM" />
     <property name="java.vendor.version" value="Temurin-23+37" />
-    <property name="compile.classpath" value="/home/dosi/eclipse-workspace/TetrisAnt-TP/lib/commons-lang3-3.5.jar;lib/hamcrest-core-1.3.jar;lib/hamcrest-library-1.3.jar" />
+    <property name="compile.classpath" value="/home/dosi/eclipse-workspace/TetrisAnt-TP/lib/commons-lang3-3.5.jar;lib/hamcrest-core-1.3.jar;lib/hamcrest-library-1.3.jar;lib/hamcrest-all-1.3.jar;lib/junit-4.13.2.jar" />
     <property name="ant.core.lib" value="/home/dosi/.p2/pool/plugins/org.apache.ant_1.10.14.v20230922-1200/lib/ant.jar" />
     <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues" />
-    <property name="tests.dir" value="/home/dosi/eclipse-workspace/TetrisAnt-TP/test" />
     <property name="java.io.tmpdir" value="/tmp" />
+    <property name="tests.dir" value="/home/dosi/eclipse-workspace/TetrisAnt-TP/test" />
     <property name="java.version" value="23" />
     <property name="user.dir" value="/home/dosi/eclipse-workspace/TetrisAnt-TP" />
     <property name="os.arch" value="amd64" />
@@ -66,8 +67,8 @@
     <property name="ant.version" value="Apache Ant(TM) version 1.10.14 compiled on August 16 2023" />
     <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib:/home/dosi/eclipse/jee-2024-09/eclipse/configuration/org.eclipse.osgi/796/0/.cp" />
     <property name="eclipse.pdebuild.scripts" value="/home/dosi/eclipse/jee-2024-09/eclipse/../../../.p2/pool/plugins/org.eclipse.pde.build_3.12.500.v20240809-1837/scripts" />
-    <property name="stderr.encoding" value="UTF-8" />
     <property name="java.vm.info" value="mixed mode, sharing" />
+    <property name="stderr.encoding" value="UTF-8" />
     <property name="java.vendor" value="Eclipse Adoptium" />
     <property name="java.vm.version" value="23+37" />
     <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
@@ -75,7 +76,7 @@
     <property name="src.dir" value="/home/dosi/eclipse-workspace/TetrisAnt-TP/src" />
     <property name="ant.project.default-target" value="compile" />
   </properties>
-  <testcase classname="fr.ubo.tetris.TestShape" name="initializationError" time="0.008">
+  <testcase classname="fr.ubo.tetris.TestShape" name="initializationError" time="0.009">
     <error message="org/hamcrest/SelfDescribing" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/hamcrest/SelfDescribing
 	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
 	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1026)

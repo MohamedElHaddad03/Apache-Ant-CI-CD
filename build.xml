@@ -9,11 +9,13 @@
 	<property name="obj.dir" location="bin" />
 	<property name="libs.dir" location="lib" />
 	<property name="main.class" value="fr.ubo.tetris.Tetris" />
-	<property name="compile.classpath" value="${libs.dir}/commons-lang3-3.5.jar;lib/hamcrest-core-1.3.jar;lib/hamcrest-library-1.3.jar" />
+	<property name="compile.classpath" value="${libs.dir}/commons-lang3-3.5.jar;lib/hamcrest-core-1.3.jar;lib/hamcrest-library-1.3.jar;lib/hamcrest-all-1.3.jar;lib/junit-4.13.2.jar" />
 	<property name="Version" value="1.0.1" />
 	<property name="tests.dir" location="test" />
 	<property name="tests.results.dir" location="bin/test-results" />
 	<property name="tests.reports" location="test-reports" />
+	<property name="doc.dir" location="javadoc" />
+
 
 
 
@@ -49,14 +51,18 @@
 	<target name="test" depends="compile-test" description="Tester le projet">
 		<mkdir dir="${tests.results.dir}" />
 
-		<junit printsummary="true" haltonfailure="true" haltonerror="true" showoutput="true">
+		<junit  printsummary="true" haltonfailure="true" haltonerror="true" showoutput="true">
 			<classpath>
 				<pathelement path="${obj.dir}" />
 				<pathelement path="${compile.classpath}" />
-				<!--<pathelement path="lib/hamcrest-core-1.3.jar" />
-				<pathelement path="lib/hamcrest-library-1.3.jar" />-->
+				<pathelement path="lib/hamcrest-core-1.3.jar" />
+				<pathelement path="lib/hamcrest-library-1.3.jar" />
+				<pathelement path="lib/hamcrest-all-1.3.jar" />
+				<pathelement path="lib/junit-4.13.2.jar" />
+
+
 			</classpath>
-			<batchtest>
+			<batchtest fork="no">
 				<fileset dir="${obj.dir}">
 					<include name="**/*Test*.class" />
 				</fileset>
@@ -74,7 +80,7 @@
 
 		<junit printsummary="true" haltonfailure="true" haltonerror="true" showoutput="true">
 	        
-	        <batchtest fork="yes" todir="${test.reports}">
+	        <batchtest fork="no" todir="${test.reports}">
 	            <fileset dir="${tests.dir}">
 	                <include name="**/*Test*.class" />
 	            </fileset>
@@ -89,11 +95,12 @@
 	    <mkdir dir="${doc.dir}" />
 	    <javadoc destdir="${doc.dir}" source="17" classpath="${compile.classpath}">
 	        <sourcepath path="${src.dir}" />
-	        <packagenames>
-	            <package name="fr.ubo.tetris" />
-	        </packagenames>
+	        <packageset dir="src" defaultexcludes="yes">
+	            <include name="fr.ubo.tetris" />
+	        </packageset>
 	    </javadoc>
 	</target>
+
 
 
 	<target name="clean" description="Clean up">
@@ -101,4 +108,24 @@
 		<delete dir="${obj.dir}" />
 		<delete dir="${libs.dir}" />
 	</target>
+	
+	
+	<target name="junit">
+	    <junit>
+	    	<classpath>
+	    					<pathelement path="${obj.dir}" />
+	    					<pathelement path="${compile.classpath}" />
+	    					<pathelement path="lib/hamcrest-core-1.3.jar" />
+	    					<pathelement path="lib/hamcrest-library-1.3.jar" />
+	    					<pathelement path="lib/hamcrest-all-1.3.jar" />
+	    					<pathelement path="lib/junit-4.13.2.jar" />
+
+
+	    				</classpath>	        <batchtest>
+	            <fileset dir="${tests.dir}" />
+	        </batchtest>
+	        <formatter type="plain" usefile="false" />
+	    </junit>
+	</target>
+
 </project>
