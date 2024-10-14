@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="Compilation de Tetris" default="compile" basedir=".">
+<project name="Compilation de Tetris" default="compile" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
     <description>
         Compilation de Tetris avec Ant
     </description>
@@ -13,6 +13,10 @@
     <property name="Version" value="1.0.1"/>
 
 
+	<target name="retrieve">
+		<ivy:settings/>
+		<ivy:resolve/>
+	</target>
     <target name="init">
         <tstamp/>
         <mkdir dir="${obj.dir}"/>
