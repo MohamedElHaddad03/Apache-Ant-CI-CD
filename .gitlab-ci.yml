@@ -6,9 +6,12 @@ build:
   script:
     - docker build -t tetris-project:latest .
     - docker run --entrypoint ant tetris-project all
+    - pwd
+    - ls -la
+
   artifacts:
     paths:
-      - app/bin/Tetris.jar
+      - bin/Tetris.jar
   tags:
     - dosi
 
