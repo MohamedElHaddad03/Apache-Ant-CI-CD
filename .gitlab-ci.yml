@@ -9,11 +9,20 @@ variables:
   ANT_HOME: "/usr/bin/ant"
   PATH_ANT: "$PATH:$ANT_HOME/bin"
 
+  
+before_script:
+    - apt-get update -y
+    - apt-get install -y ant openjdk-17-jdk || { echo "Failed to install Ant"; exit 1; }
+    - echo "Ant installation successful. Path:"
+    - which ant
+    - ant -version  # Verify the Ant installation
+
+  
 clean:
   stage: clean
   script:
     - apt-get update -y
-    - ant compile
+    - ant clean
 
 build:
   stage: build
