@@ -5,12 +5,12 @@ build:
   stage: build
   script:
     - docker build -t tetris-project:latest .
-    - docker run --entrypoint ant tetris-project all
-    - ls /app
-
+    - docker run --name tetris_container tetris-project:latest ant all
+    - docker cp tetris_container:/app/bin/Tetris.jar .
+    - docker rm tetris_container  # Clean up the container
+    - ls .  # List files in the current directory
   artifacts:
     paths:
-      - /app/bin/Tetris.jar
+      - Tetris.jar
   tags:
     - dosi
-
