@@ -7,7 +7,7 @@ stages:
 
 variables:
   ANT_HOME: "/usr/bin/ant"
-  PATH: "$PATH:$ANT_HOME/bin"
+  PATH_ANT: "$PATH:$ANT_HOME/bin"
 
 clean:
   stage: clean
