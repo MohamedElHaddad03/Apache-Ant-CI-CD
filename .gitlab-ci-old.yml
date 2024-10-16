@@ -1,19 +1,34 @@
 stages:
+  - clean	
   - build
   - test
   - document
   - notify
 
 variables:
-  DOCKER_IMAGE: "my-tetris-project:latest"
+  ANT_HOME: "/usr/bin/ant"
+  PATH_ANT: "$PATH:$ANT_HOME/bin"
+  ANT_LIB : "/usr/share/ant/lib"
 
+  
 before_script:
-  - echo "Setting up Docker..."
+    - apt-get update -y
+    - apt-get install -y ant openjdk-17-jdk || { echo "Failed to install Ant"; exit 1; }
+    - echo "Ant installation successful. Path:"
+    - which ant
+    - ant -version  
+
+  
+clean:
+  stage: clean
+  script:
+    - apt-get update -y
+    - ant clean
 
 build:
   stage: build
   script:
-    - docker build -t $DOCKER_IMAGE .
+    - ant -lib /home/dosi/Téléchargements/apache-ivy-2.5.2-bin/apache-ivy-2.5.2/ivy-2.5.2.jar compile
   artifacts:
     paths:
       - bin/Tetris.jar
@@ -21,7 +36,7 @@ build:
 test:
   stage: test
   script:
-    - docker run --rm $DOCKER_IMAGE ant test-reports
+    - ant test-reports
   artifacts:
     paths:
       - bin/test-results/
@@ -32,10 +47,10 @@ test:
 document:
   stage: document
   script:
-    - docker run --rm $DOCKER_IMAGE ant javadoc
+    - ant javadoc
   artifacts:
     paths:
-      - javadoc/
+      - java-doc/
   dependencies:
     - build
 
