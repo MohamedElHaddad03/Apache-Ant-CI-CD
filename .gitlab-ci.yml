@@ -12,8 +12,6 @@ variables:
 
 build:
   stage: build
-  tags:
-    - dosi-Latitude-5520 
   script:
     - docker build -t $DOCKER_IMAGE .
   artifacts:
