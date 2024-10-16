@@ -10,7 +10,7 @@ build:
 
   artifacts:
     paths:
-      - bin/Tetris.jar
+      - /app/bin/Tetris.jar
   tags:
     - dosi
 
