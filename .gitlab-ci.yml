@@ -12,9 +12,13 @@ build:
   artifacts:
     paths:
       - bin/Tetris.jar
+  tags:
+  - tHCSoHMtC
 
 notify:
   stage: notify
+  tags:
+    - tHCSoHMtC
   script:
     - |
       curl -X POST -H "Content-Type: application/json" \
