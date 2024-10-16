@@ -6,8 +6,7 @@ build:
   script:
     - docker build -t tetris-project:latest .
     - docker run --entrypoint ant tetris-project all
-    - pwd
-    - ls -la
+    - pwd | ls -la
 
   artifacts:
     paths:
