@@ -19,5 +19,4 @@ WORKDIR /app
 
 COPY . .
 
-ENTRYPOINT ["ant"]
-CMD ["all"]
+RUN ant all
