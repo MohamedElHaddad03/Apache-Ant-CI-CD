@@ -7,8 +7,8 @@ build:
     - docker build -t tetris-project:latest .
     - docker run --name tetris_container tetris-project:latest ant all
     - docker cp tetris_container:/app/bin/Tetris.jar .
-    - docker rm tetris_container  # Clean up the container
-    - ls .  # List files in the current directory
+    - docker rm tetris_container  
+    - ls .  
   artifacts:
     paths:
       - Tetris.jar
