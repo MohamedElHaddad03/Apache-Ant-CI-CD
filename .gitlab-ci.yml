@@ -15,7 +15,7 @@ before_script:
     - apt-get install -y ant openjdk-17-jdk || { echo "Failed to install Ant"; exit 1; }
     - echo "Ant installation successful. Path:"
     - which ant
-    - ant -version  # Verify the Ant installation
+    - ant -version  
 
   
 clean:

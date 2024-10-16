@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project name="Compilation de Tetris" default="compile" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
+	<taskdef name="ivy:retrieve" classname="org.apache.ivy.ant.RetrieveTask" classpath="path/to/ivy.jar"/>
+
+
 	<description>
         Compilation de Tetris avec Ant
     </description>
@@ -20,10 +23,11 @@
 
 
 	<target name="retrieve">
-		<ivy:retrieve sync="true" type="jar" />
-		<ivy:settings />
-		<ivy:resolve />
+	    <ivy:settings />
+	    <ivy:resolve />
+	    <ivy:retrieve sync="true" type="jar" />
 	</target>
+
 	<target name="init">
 		<tstamp />
 		<mkdir dir="${obj.dir}" />
