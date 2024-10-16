@@ -2,18 +2,10 @@ stages:
   - build
   - notify
   
-  
-
-
-variables:
-  DOCKER_IMAGE: "tetris-project:latest"
-
-
-
 build:
   stage: build
   script:
-    - docker build -t $DOCKER_IMAGE .
+    - docker build -t tetris-project:latest .
   artifacts:
     paths:
       - bin/Tetris.jar
