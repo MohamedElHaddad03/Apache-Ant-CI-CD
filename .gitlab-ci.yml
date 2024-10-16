@@ -1,4 +1,5 @@
 stages:
+  - clean	
   - build
   - test
   - document
@@ -12,6 +13,11 @@ before_script:
   - apt-get update -y
   - apt-get install -y ant openjdk-17-jdk
 
+  
+clean:
+  stage: clean
+  script:
+    - ant compile
 build:
   stage: build
   script:
