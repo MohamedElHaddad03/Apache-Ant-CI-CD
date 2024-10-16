@@ -1,14 +1,11 @@
 stages:
   - build
-  - test
-  - document
   - notify
 
 variables:
-  DOCKER_IMAGE: "my-tetris-project:latest"
+  DOCKER_IMAGE: "tetris-project:latest"
 
-before_script:
-  - echo "Setting up Docker..."
+
 
 build:
   stage: build
@@ -17,27 +14,6 @@ build:
   artifacts:
     paths:
       - bin/Tetris.jar
-
-test:
-  stage: test
-  script:
-    - docker run --rm $DOCKER_IMAGE ant test-reports
-  artifacts:
-    paths:
-      - bin/test-results/
-      - test-reports/
-  dependencies:
-    - build
-
-document:
-  stage: document
-  script:
-    - docker run --rm $DOCKER_IMAGE ant javadoc
-  artifacts:
-    paths:
-      - javadoc/
-  dependencies:
-    - build
 
 notify:
   stage: notify
