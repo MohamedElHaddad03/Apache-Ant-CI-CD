@@ -8,6 +8,7 @@ stages:
 variables:
   ANT_HOME: "/usr/bin/ant"
   PATH_ANT: "$PATH:$ANT_HOME/bin"
+  ANT_LIB : "/usr/share/ant/lib"
 
   
 before_script:
@@ -27,7 +28,7 @@ clean:
 build:
   stage: build
   script:
-    - ant compile
+    - ant -lib /usr/share/ant/lib compile
   artifacts:
     paths:
       - bin/Tetris.jar
