@@ -13,12 +13,12 @@ build:
     paths:
       - bin/Tetris.jar
   tags:
-  - tHCSoHMtC
+  - dosi
 
 notify:
   stage: notify
   tags:
-    - tHCSoHMtC
+    - dosi
   script:
     - |
       curl -X POST -H "Content-Type: application/json" \
