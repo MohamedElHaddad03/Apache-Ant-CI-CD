@@ -28,7 +28,7 @@ clean:
 build:
   stage: build
   script:
-    - ant -lib /usr/share/ant/lib compile
+    - ant -lib /home/dosi/Téléchargements/apache-ivy-2.5.2-bin/apache-ivy-2.5.2/ivy-2.5.2.jar compile
   artifacts:
     paths:
       - bin/Tetris.jar
