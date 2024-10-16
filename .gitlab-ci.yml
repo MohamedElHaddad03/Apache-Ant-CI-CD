@@ -5,7 +5,7 @@ stages:
   - notify
 
 variables:
-  ANT_HOME: "/usr/share/ant"
+  ANT_HOME: "/usr/bin/ant"
   PATH: "$PATH:$ANT_HOME/bin"
 
 before_script:
