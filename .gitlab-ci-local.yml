@@ -13,6 +13,7 @@ build:
     - dosi-Latitude-5520
   script:
     - docker build -t $DOCKER_IMAGE .
+    - docker run --entrypoint ant tetris-project all
   artifacts:
     paths:
       - bin/Tetris.jar
