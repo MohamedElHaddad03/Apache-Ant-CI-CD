@@ -9,15 +9,13 @@ variables:
   ANT_HOME: "/usr/bin/ant"
   PATH: "$PATH:$ANT_HOME/bin"
 
-before_script:
-  - apt-get update -y
-  - apt-get install -y ant openjdk-17-jdk
-
-  
 clean:
   stage: clean
   script:
+    - apt-get update -y
+    - apt-get install -y ant openjdk-17-jdk
     - ant compile
+
 build:
   stage: build
   script:
@@ -34,6 +32,8 @@ test:
     paths:
       - bin/test-results/
       - test-reports/
+  dependencies:
+    - build
 
 document:
   stage: document
@@ -42,13 +42,15 @@ document:
   artifacts:
     paths:
       - java-doc/
-  
+  dependencies:
+    - build
+
 notify:
-    stage: notify
-    script:
-      - |
-        curl -X POST -H "Content-Type: application/json" \
-        -d '{
-              "text": "Compilé avec succee"
-            }' \
-        https://chat.googleapis.com/v1/spaces/AAAAbRqmWPk/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=oxHNTaC3Byywe-BcH2GYuwsuM_hFnUFdwKVgWqfHoGM
+  stage: notify
+  script:
+    - |
+      curl -X POST -H "Content-Type: application/json" \
+      -d '{
+            "text": "Compilé avec succès"
+          }' \
+        $NOTIFY_URL https://chat.googleapis.com/v1/spaces/AAAAbRqmWPk/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=oxHNTaC3Byywe-BcH2GYuwsuM_hFnUFdwKVgWqfHoGM
