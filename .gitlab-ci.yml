@@ -13,7 +13,6 @@ clean:
   stage: clean
   script:
     - apt-get update -y
-    - apt-get install -y ant openjdk-17-jdk
     - ant compile
 
 build:
