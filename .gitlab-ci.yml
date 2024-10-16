@@ -4,6 +4,9 @@ stages:
   
 build:
   stage: build
+  image: docker:latest
+  services:
+     - docker:dind
   script:
     - docker build -t tetris-project:latest .
   artifacts:
