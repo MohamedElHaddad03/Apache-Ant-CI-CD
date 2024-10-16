@@ -8,7 +8,7 @@ build:
     - docker run --entrypoint ant tetris-project all
   artifacts:
     paths:
-      - bin/Tetris.jar
+      - app/bin/Tetris.jar
   tags:
     - dosi
 
