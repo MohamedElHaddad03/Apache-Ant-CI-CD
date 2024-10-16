@@ -1,0 +1,27 @@
+name: Build Tetris Project
+
+on:
+  push:
+    branches:
+      - main  
+  pull_request:
+    branches:
+      - main  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build Docker image
+        run: |
+          docker build -t tetris-project:latest .
+
+      - name: Save Tetris.jar artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Tetris.jar
+          path: bin/Tetris.jar
