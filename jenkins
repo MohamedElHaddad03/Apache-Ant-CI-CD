@@ -1,0 +1,41 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clean Up') {
+            steps {
+                script {
+                    sh 'docker rm tetris_container || true'
+                }
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    sh 'docker build -t tetris-project:latest .'
+                }
+            }
+        }
+        stage('Run Docker Container') {
+            steps {
+                script {
+                    sh 'docker run --name tetris_container tetris-project:latest ant all'
+                }
+            }
+        }
+        stage('Copy Artifact') {
+            steps {
+                script {
+                    sh 'docker cp tetris_container:/app/bin/Tetris.jar .'
+                }
+            }
+        }
+        stage('Clean Up Container') {
+            steps {
+                script {
+                    sh 'docker rm tetris_container'
+                }
+            }
+        }
+    }
+}
