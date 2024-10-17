@@ -44,5 +44,5 @@ jobs:
           
       - name: Tag and Push Docker Image
         run: |
-          docker tag tetris-project:latest $DOCKER_USERNAME/tetris-project:${{ github.ref_name }}
+          docker tag tetris-project:latest $DOCKER_USERNAME/tetris-project:${{ github.ref }}
           docker push $DOCKER_USERNAME/tetris-project:${{ github.ref_name }}
