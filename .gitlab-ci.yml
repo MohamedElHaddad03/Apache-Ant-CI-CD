@@ -1,16 +1,38 @@
 stages:
   - build
+  - deploy
 
 build:
   stage: build
   script:
+    - docker rm tetris_container || true
     - docker build -t tetris-project:latest .
     - docker run --name tetris_container tetris-project:latest ant all
     - docker cp tetris_container:/app/bin/Tetris.jar .
-    - docker rm tetris_container  
-    - ls .  
+    - docker rm tetris_container
+    - ls .
   artifacts:
     paths:
       - Tetris.jar
+  tags:
+    - dosi
+
+deploy:
+  stage: deploy
+  needs: 
+    - build
+  variables:
+    DOCKER_USERNAME: elhaddadmohamed2003
+    DOCKER_PASSWORD: RABAArab11rab@@
+  script:
+    - |
+      echo "Déploiement vers Docker Hub"
+      docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+      docker tag tetris-project:latest $DOCKER_USERNAME/tetris-project:$CI_COMMIT_TAG
+      docker push $DOCKER_USERNAME/tetris-project:$CI_COMMIT_TAG
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+    - if: '$CI_COMMIT_TAG =~ /^\d+\.\d+\.\d+$/'
+      when: manual  
   tags:
     - dosi
