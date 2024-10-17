@@ -38,7 +38,9 @@ jobs:
 
       - name: Push to Docker Hub
         run: |
-          TAG=${GITHUB_REF##*/}
+          echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
+          TAG=$$GITHUB_REF_NAME
           echo "Pushing Tetris project to Docker Hub with tag: $TAG"
           docker build -t tetris-project:$TAG .
           docker push tetris-project:$TAG
+          
