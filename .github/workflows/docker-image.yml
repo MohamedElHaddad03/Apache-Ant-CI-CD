@@ -23,7 +23,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: my-artifact
-          path: ./bin/Tetris.jar
+          path: ./nin/Tetris.jar
 
   deploy:
     runs-on: ubuntu-22.04
