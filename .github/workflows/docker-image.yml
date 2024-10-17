@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-22.04
     needs: build
     if: github.ref == 'refs/heads/main' && startsWith(github.ref, 'refs/tags/v')  
-    if :     if: github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'workflow_dispatch'
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
