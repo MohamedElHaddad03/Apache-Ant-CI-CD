@@ -12,8 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: Build project
         run: |
@@ -23,16 +22,23 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: my-artifact
-          path: /app/bin/Tetris.jar
+          path: /app/bin/Tetris.jar  
 
   deploy:
     runs-on: ubuntu-22.04
     needs: build
-   # if: github.ref == 'refs/heads/main' && startsWith(github.ref, 'refs/tags/*')  
+    # if: startsWith(github.ref, 'refs/tags/') 
     
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+
+      - name: Set output
+        id: vars
+        run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
+
+      - name: Check output
+        run: |
+          echo "RELEASE_VERSION: ${{ steps.vars.outputs.tag }}"
 
       - name: Docker Login
         env:
@@ -44,7 +50,7 @@ jobs:
           
       - name: Tag and Push Docker Image
         run: |
-          TAG_NAME=${GITHUB_REF#refs/tags/}
+          TAG_NAME=${{ steps.vars.outputs.tag }}
           echo "Tagging with TAG_NAME: $TAG_NAME"
           docker tag tetris-project:latest "$DOCKER_USERNAME/tetris-project:$TAG_NAME"
           docker push "$DOCKER_USERNAME/tetris-project:$TAG_NAME"
